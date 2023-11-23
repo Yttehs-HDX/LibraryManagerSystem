@@ -4,7 +4,8 @@ using namespace std;
 
 int main() {
 
-    Manager::menu();
+    Manager manager;
+    manager.menu();
 
     return 0;
 }

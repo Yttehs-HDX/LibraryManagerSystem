@@ -11,11 +11,8 @@
 
 class BookList {
 private:
-    BookList() {}; // 不可外露构造函数
-    static BookList *instance; // 单实例
-
     // 存储所有书本
-    vector<Book> books;
+    vector<Book> books {Book("123456789", "123456789", "123456789", "1", 0, 0)};
     // 打印信息
     void printOneBook(const Book &book);
     void printBooks();
@@ -30,14 +27,6 @@ private:
     void modifyBooks(vector<Book> &buffer);
     void modifyOneBook(Book *book);
 public:
-    // 单例类
-    static BookList &getInstance() {
-        if (instance == nullptr) {
-            instance = new BookList();
-        } else {
-            return *instance;
-        }
-    }
     // 读出信息：从文件中将图书信息读入程序
     void initBooks();
 
@@ -71,6 +60,5 @@ public:
     // 添加功能：主要完成图书信息的添加，要求ISBN号唯一
     void addBook(const string &isbn);
 };
-
 
 #endif //LIBRARYMANAGERSYSTEM_BOOKLIST_H

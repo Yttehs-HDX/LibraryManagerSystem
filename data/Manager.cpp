@@ -3,7 +3,8 @@
 // 菜单
 void Manager::menu() {
     cout << "欢迎来到图书馆管理系统" << endl;
-    BookList::getInstance().initBooks();
+    instance = BookList();
+    instance.initBooks();
     while (true) {
         cout << "菜单：" << endl;
         cout << "1. 销售图书" << endl;
@@ -36,24 +37,24 @@ void Manager::menu() {
                 sumBooks();
                 break;
             default:
+                instance.saveAllBooks();
                 return;
         }
     }
-    BookList::getInstance().saveAllBooks();
 }
 // 销售图书
 void Manager::saleBook() {
     cout << "请输入图书ISBN：";
     string isbn;
     cin >> isbn;
-    BookList::getInstance().sellBook(isbn);
+    instance.sellBook(isbn);
 }
 // 添加图书
 void Manager::addBook() {
     cout << "请输入图书ISBN：" << endl;
     string isbn;
     cin >> isbn;
-    BookList::getInstance().addBook(isbn);
+    instance.addBook(isbn);
 }
 // 查询图书
 void Manager::queryBook() {
@@ -70,22 +71,22 @@ void Manager::queryBook() {
         case 1:
             cout << "请输入：书名";
             cin >> input;
-            BookList::getInstance().findBooksByName(input);
+            instance.findBooksByName(input);
             break;
         case 2:
             cout << "请输入：ISBN";
             cin >> input;
-            BookList::getInstance().findBookByIsbn(input);
+            instance.findBookByIsbn(input);
             break;
         case 3:
             cout << "请输入：作者";
             cin >> input;
-            BookList::getInstance().findBooksByAuthor(input);
+            instance.findBooksByAuthor(input);
             break;
         case 4:
             cout << "请输入：出版社";
             cin >> input;
-            BookList::getInstance().findBooksByPublisher(input);
+            instance.findBooksByPublisher(input);
             break;
         default:
             cout << "非法输入！" << endl;
@@ -106,22 +107,22 @@ void Manager::updateBook() {
         case 1:
             cout << "请输入：书名";
             cin >> input;
-            BookList::getInstance().modifyBooksByName(input);
+            instance.modifyBooksByName(input);
             break;
         case 2:
             cout << "请输入：ISBN";
             cin >> input;
-            BookList::getInstance().modifyBooksByIsbn(input);
+            instance.modifyBooksByIsbn(input);
             break;
         case 3:
             cout << "请输入：作者";
             cin >> input;
-            BookList::getInstance().modifyBooksByAuthor(input);
+            instance.modifyBooksByAuthor(input);
             break;
         case 4:
             cout << "请输入：出版社";
             cin >> input;
-            BookList::getInstance().modifyBooksByPublisher(input);
+            instance.modifyBooksByPublisher(input);
             break;
         default:
             cout << "非法输入！" << endl;
@@ -132,7 +133,7 @@ void Manager::deleteBook() {
     cout << "请输入ISBN：" << endl;
     string isbn;
     cin >> isbn;
-    BookList::getInstance().deleteBook(isbn);
+    instance.deleteBook(isbn);
 }
 // 统计图书
 void Manager::sumBooks() {
@@ -147,14 +148,14 @@ void Manager::sumBooks() {
     string input;
     switch (choice) {
         case 1:
-            BookList::getInstance().showAllBooksByPrice();
+            instance.showAllBooksByPrice();
         case 2:
-            BookList::getInstance().showAllBooksByCount();
+            instance.showAllBooksByCount();
         case 3:
-            BookList::getInstance().showAllBooksByAuthor();
+            instance.showAllBooksByAuthor();
             break;
         case 4:
-            BookList::getInstance().showAllBooksByPublisher();
+            instance.showAllBooksByPublisher();
             break;
         default:
             cout << "非法输入！" << endl;
