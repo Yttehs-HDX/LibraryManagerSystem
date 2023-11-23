@@ -60,7 +60,7 @@ public:
     static void sellBook(const string &isbn);
 
     // 添加功能：主要完成图书信息的添加，要求ISBN号唯一
-    static void addBook(const string &name, const string &publisher, const string &isbn, const string &author, int count, double price);
+    static void addBook(const string &isbn);
 };
 
 

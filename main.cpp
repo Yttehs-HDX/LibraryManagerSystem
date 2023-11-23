@@ -1,13 +1,10 @@
-#include <bits/stdc++.h>
-#include "data/BookList.h"
+#include "data/Manager.h"
 
 using namespace std;
 
 int main() {
 
-    BookList::initBooks();
-
-    BookList::saveAllBooks();
+    Manager::menu();
 
     return 0;
 }

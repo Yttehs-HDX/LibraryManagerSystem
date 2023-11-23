@@ -12,6 +12,24 @@ private:
 public:
     // 菜单
     static void menu();
+
+    // 销售图书
+    static void saleBook();
+
+    // 添加图书
+    static void addBook();
+
+    // 查询图书
+    static void queryBook();
+
+    // 修改图书
+    static void updateBook();
+
+    // 删除图书
+    static void deleteBook();
+
+    // 统计图书
+    static void sumBooks();
 };
 
 

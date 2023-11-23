@@ -260,11 +260,26 @@ void BookList::sellBook(const string &isbn) {
     }
 }
 // 添加功能：主要完成图书信息的添加，要求ISBN号唯一
-void BookList::addBook(const string &name, const string &publisher, const string &isbn, const string &author, int count, double price) {
+void BookList::addBook(const string &isbn) {
     Book *target = searchBookByIsbn(isbn);
     if (target != nullptr) {
         cout << "添加失败，该书本已存在！" << endl;
     } else {
+        cout << "请输入图书名称：" << endl;
+        string name;
+        cin >> name;
+        cout << "请输入图书出版社：" << endl;
+        string publisher;
+        cin >> publisher;
+        cout << "请输入图书作者：" << endl;
+        string author;
+        cin >> author;
+        cout << "请输入图书数量：" << endl;
+        int count;
+        cin >> count;
+        cout << "请输入图书价格：" << endl;
+        double price;
+        cin >> price;
         books.emplace_back(name, publisher, isbn, author, count, price);
         cout << "添加成功。" << endl;
     }
