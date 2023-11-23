@@ -32,3 +32,38 @@ void BookList::saveAllBooks() {
     }
     file.close();
 }
+
+void BookList::printBooks() {
+    for (const Book &book : books) {
+        cout << book.getName()
+             << " " << book.getPublisher()
+             << " " << book.getIsbn()
+             << " " << book.getAuthor()
+             << " " << book.getCount()
+             << " " << book.getPrice() << endl;
+    }
+}
+
+void BookList::showAllBooksByPrice() {
+    sort(books.begin(), books.end(),
+         [](const Book &a, const Book &b) {return a.getPrice() > b.getPrice();});
+    printBooks();
+}
+
+void BookList::showAllBooksByCount() {
+    sort(books.begin(), books.end(),
+         [](const Book &a, const Book &b) {return a.getCount() > b.getCount();});
+    printBooks();
+}
+
+void BookList::showAllBooksByAuthor() {
+    sort(books.begin(), books.end(),
+         [](const Book &a, const Book &b) {return a.getAuthor() > b.getAuthor();});
+    printBooks();
+}
+
+void BookList::showAllBooksByPublisher() {
+    sort(books.begin(), books.end(),
+         [](const Book &a, const Book &b) {return a.getPublisher() > b.getPublisher();});
+    printBooks();
+}
