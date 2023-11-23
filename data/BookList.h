@@ -28,8 +28,6 @@ private:
     // 修改
     static void modifyBooks(vector<Book> &buffer);
     static void modifyOneBook(Book *book);
-
-
 public:
     // 读出信息：从文件中将图书信息读入程序
     static void initBooks();
@@ -54,6 +52,9 @@ public:
     static void modifyBooksByIsbn(const string &isbn);
     static void modifyBooksByAuthor(const string &author);
     static void modifyBooksByPublisher(const string &publisher);
+
+    // 删除功能：主要完成图书信息的删除
+    static void deleteBook(const string &isbn);
 
     // 销售功能
     static void sellBook(const string &isbn);

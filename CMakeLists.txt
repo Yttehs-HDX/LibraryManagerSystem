@@ -7,4 +7,6 @@ add_executable(LibraryManagerSystem main.cpp
         data/Book.cpp
         data/Book.h
         data/BookList.cpp
-        data/BookList.h)
+        data/BookList.h
+        data/Manager.cpp
+        data/Manager.h)

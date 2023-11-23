@@ -238,6 +238,17 @@ void BookList::modifyBooksByPublisher(const string &publisher) {
     vector<Book> buffer = searchBooksByPublisher(publisher);
     modifyBooks(buffer);
 }
+// 删除功能：主要完成图书信息的删除
+void BookList::deleteBook(const string &isbn) {
+    for (auto it = books.begin(); it != books.end(); ++it) {
+        if (it->getIsbn() == isbn) {
+            books.erase(it);
+            cout << "删除成功。" << endl;
+            return;
+        }
+    }
+    cout << "该标题不存在！" << endl;
+}
 // 销售功能：根据ISBN确定书本并将书本数量减一
 void BookList::sellBook(const string &isbn) {
     Book *target = searchBookByIsbn(isbn);
