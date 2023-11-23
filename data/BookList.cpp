@@ -109,13 +109,82 @@ vector<Book> BookList::searchBooksByPublisher(const string &publisher) {
     }
     return buffer;
 }
+// 修改
+void BookList::modifyOneBook(Book *book) {
+    cout << "请输入想修改的信息：";
+    cout << "1. 书名" << endl;
+    cout << "2. 出版社" << endl;
+    cout << "3. ISBN" << endl;
+    cout << "4. 作者" << endl;
+    cout << "5. 库存量" << endl;
+    cout << "6. 价格" << endl;
+    cout << "0. 返回" << endl;
+    int choice;
+    cin >> choice;
+    cout << "请输入新值：";
+    string input1;
+    int input2;
+    switch (choice) {
+        case 0:
+            break;
+        case 1:
+            cin >> input1;
+            book->setName(input1);
+            break;
+        case 2:
+            cin >> input1;
+            book->setPublisher(input1);
+            break;
+        case 3:
+            cin >> input1;
+            book->setIsbn(input1);
+            break;
+        case 4:
+            cin >> input1;
+            book->setAuthor(input1);
+            break;
+        case 5:
+            cin >> input2;
+            book->setCount(input2);
+            break;
+        case 6:
+            cin >> input2;
+            book->setPrice(input2);
+            break;
+        default:
+            cout << "非法输入！" << endl;
+            return;
+    }
+    cout << "修改成功。" << endl;
+}
+void BookList::modifyBooks(vector<Book> &buffer) {
+    if (buffer.empty()) {
+        cout << "该标题不存在！" << endl;
+    } else {
+        int num = 1;
+        for (const Book &book : books) {
+            cout << num++ << " ";
+            printOneBook(book);
+        }
+        cout << "请输入你想要修改的序号：";
+        int index;
+        cin >> index;
+        if (index < 0 && index > num) {
+            cout << "非法输入！" << endl;
+            return;
+        }
+        modifyOneBook(&buffer[index]);
+    }
+}
 // 查询功能：可按书名、ISBN号、作者、出版社进行查询
 void BookList::findBooksByName(const string &name) {
     vector<Book> buffer = searchBooksByName(name);
     if (buffer.empty()) {
-        cout << "查无此书。" << endl;
+        cout << "该标题不存在！" << endl;
     } else {
+        int num = 1;
         for (const Book &book : books) {
+            cout << num++ << " ";
             printOneBook(book);
         }
     }
@@ -125,15 +194,17 @@ void BookList::findBookByIsbn(const string &isbn) {
     if (target != nullptr) {
         printOneBook(*target);
     } else {
-        cout << "查无此书。" << endl;
+        cout << "该标题不存在！" << endl;
     }
 }
 void BookList::findBooksByAuthor(const string &author) {
     vector<Book> buffer = searchBooksByAuthor(author);
     if (buffer.empty()) {
-        cout << "查无此书。" << endl;
+        cout << "该标题不存在！" << endl;
     } else {
+        int num = 1;
         for (const Book &book : books) {
+            cout << num++ << endl;
             printOneBook(book);
         }
     }
@@ -141,12 +212,31 @@ void BookList::findBooksByAuthor(const string &author) {
 void BookList::findBooksByPublisher(const string &publisher) {
     vector<Book> buffer = searchBooksByPublisher(publisher);
     if (buffer.empty()) {
-        cout << "查无此书。" << endl;
+        cout << "该标题不存在！" << endl;
     } else {
+        int num = 1;
         for (const Book &book : books) {
+            cout << num++ << " ";
             printOneBook(book);
         }
     }
+}
+// 修改功能：可根据查询结果对相应的记录进行修改
+void BookList::modifyBooksByName(const string &name) {
+    vector<Book> buffer = searchBooksByName(name);
+    modifyBooks(buffer);
+}
+void BookList::modifyBooksByIsbn(const string &isbn) {
+    Book *book = searchBookByIsbn(isbn);
+    modifyOneBook(book);
+}
+void BookList::modifyBooksByAuthor(const string &author) {
+    vector<Book> buffer = searchBooksByAuthor(author);
+    modifyBooks(buffer);
+}
+void BookList::modifyBooksByPublisher(const string &publisher) {
+    vector<Book> buffer = searchBooksByPublisher(publisher);
+    modifyBooks(buffer);
 }
 // 销售功能：根据ISBN确定书本并将书本数量减一
 void BookList::sellBook(const string &isbn) {

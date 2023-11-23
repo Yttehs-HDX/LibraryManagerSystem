@@ -24,6 +24,12 @@ private:
     static Book * searchBookByIsbn(const string &isbn);
     static vector<Book> searchBooksByAuthor(const string &author);
     static vector<Book> searchBooksByPublisher(const string &publisher);
+
+    // 修改
+    static void modifyBooks(vector<Book> &buffer);
+    static void modifyOneBook(Book *book);
+
+
 public:
     // 读出信息：从文件中将图书信息读入程序
     static void initBooks();
@@ -42,6 +48,12 @@ public:
     static void findBookByIsbn(const string &isbn);
     static void findBooksByAuthor(const string &author);
     static void findBooksByPublisher(const string &publisher);
+
+    // 修改功能：可根据查询结果对相应的记录进行修改
+    static void modifyBooksByName(const string &name);
+    static void modifyBooksByIsbn(const string &isbn);
+    static void modifyBooksByAuthor(const string &author);
+    static void modifyBooksByPublisher(const string &publisher);
 
     // 销售功能
     static void sellBook(const string &isbn);
