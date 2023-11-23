@@ -33,7 +33,15 @@ void BookList::saveAllBooks() {
     }
     file.close();
 }
-
+// 打印信息
+void BookList::printOneBook(const Book &book) {
+    cout << book.getName()
+         << " " << book.getPublisher()
+         << " " << book.getIsbn()
+         << " " << book.getAuthor()
+         << " " << book.getCount()
+         << " " << book.getPrice() << endl;
+}
 void BookList::printBooks() {
     for (const Book &book : books) {
         cout << book.getName()
@@ -65,8 +73,8 @@ void BookList::showAllBooksByPublisher() {
          [](const Book &a, const Book &b) {return a.getPublisher() > b.getPublisher();});
     printBooks();
 }
-// 查询功能：可按书名、ISBN号、作者、出版社进行查询
-vector<Book> BookList::searchBookByName(const string &name) {
+// 查找，返回指针或vector
+vector<Book> BookList::searchBooksByName(const string &name) {
     vector<Book> buffer;
     for (const Book &book : books) {
         if (book.getName() == name) {
@@ -83,7 +91,7 @@ Book *BookList::searchBookByIsbn(const string &isbn) {
     }
     return nullptr;
 }
-vector<Book> BookList::searchBookByAuthor(const string &author) {
+vector<Book> BookList::searchBooksByAuthor(const string &author) {
     vector<Book> buffer;
     for (const Book &book : books) {
         if (book.getAuthor() == author) {
@@ -92,7 +100,7 @@ vector<Book> BookList::searchBookByAuthor(const string &author) {
     }
     return buffer;
 }
-vector<Book> BookList::searchBookByPublisher(const string &publisher) {
+vector<Book> BookList::searchBooksByPublisher(const string &publisher) {
     vector<Book> buffer;
     for (const Book &book : books) {
         if (book.getPublisher() == publisher) {
@@ -100,6 +108,45 @@ vector<Book> BookList::searchBookByPublisher(const string &publisher) {
         }
     }
     return buffer;
+}
+// 查询功能：可按书名、ISBN号、作者、出版社进行查询
+void BookList::findBooksByName(const string &name) {
+    vector<Book> buffer = searchBooksByName(name);
+    if (buffer.empty()) {
+        cout << "查无此书。" << endl;
+    } else {
+        for (const Book &book : books) {
+            printOneBook(book);
+        }
+    }
+}
+void BookList::findBookByIsbn(const string &isbn) {
+    Book *target = searchBookByIsbn(isbn);
+    if (target != nullptr) {
+        printOneBook(*target);
+    } else {
+        cout << "查无此书。" << endl;
+    }
+}
+void BookList::findBooksByAuthor(const string &author) {
+    vector<Book> buffer = searchBooksByAuthor(author);
+    if (buffer.empty()) {
+        cout << "查无此书。" << endl;
+    } else {
+        for (const Book &book : books) {
+            printOneBook(book);
+        }
+    }
+}
+void BookList::findBooksByPublisher(const string &publisher) {
+    vector<Book> buffer = searchBooksByPublisher(publisher);
+    if (buffer.empty()) {
+        cout << "查无此书。" << endl;
+    } else {
+        for (const Book &book : books) {
+            printOneBook(book);
+        }
+    }
 }
 // 销售功能：根据ISBN确定书本并将书本数量减一
 void BookList::sellBook(const string &isbn) {
