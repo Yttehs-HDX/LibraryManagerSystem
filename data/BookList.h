@@ -29,6 +29,9 @@ public:
     static void showAllBooksByCount();
     static void showAllBooksByAuthor();
     static void showAllBooksByPublisher();
+
+    // 销售功能
+    static void sellBook(const string &isbn);
 };
 
 
