@@ -7,13 +7,12 @@ using namespace std;
 
 class Book {
 private:
-    string name; // 书名
-    string publisher; // 出版社
-    string isbn; // ISBN号
-    string author; // 作者
-    int count; // 库存量
-    double price; // 价格
-
+    string name{}; // 书名
+    string publisher{}; // 出版社
+    string isbn{}; // ISBN号
+    string author{}; // 作者
+    int count{}; // 库存量
+    double price{}; // 价格
 public:
     // constructor
     Book(string name, string publisher, string isbn, string author, int count, double price);

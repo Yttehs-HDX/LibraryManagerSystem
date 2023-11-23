@@ -66,13 +66,14 @@ void BookList::showAllBooksByPublisher() {
     printBooks();
 }
 // 查询功能：可按书名、ISBN号、作者、出版社进行查询
-Book *BookList::searchBookByName(const string &name) {
-    for (Book &book : books) {
+vector<Book> BookList::searchBookByName(const string &name) {
+    vector<Book> buffer;
+    for (const Book &book : books) {
         if (book.getName() == name) {
-            return &book;
+            buffer.push_back(book);
         }
     }
-    return nullptr;
+    return buffer;
 }
 Book *BookList::searchBookByIsbn(const string &isbn) {
     for (Book &book : books) {
@@ -82,21 +83,23 @@ Book *BookList::searchBookByIsbn(const string &isbn) {
     }
     return nullptr;
 }
-Book *BookList::searchBookByAuthor(const string &author) {
-    for (Book &book : books) {
+vector<Book> BookList::searchBookByAuthor(const string &author) {
+    vector<Book> buffer;
+    for (const Book &book : books) {
         if (book.getAuthor() == author) {
-            return &book;
+            buffer.push_back(book);
         }
     }
-    return nullptr;
+    return buffer;
 }
-Book *BookList::searchBookByPublisher(const string &publisher) {
-    for (Book &book : books) {
+vector<Book> BookList::searchBookByPublisher(const string &publisher) {
+    vector<Book> buffer;
+    for (const Book &book : books) {
         if (book.getPublisher() == publisher) {
-            return &book;
+            buffer.push_back(book);
         }
     }
-    return nullptr;
+    return buffer;
 }
 // 销售功能：根据ISBN确定书本并将书本数量减一
 void BookList::sellBook(const string &isbn) {
@@ -108,7 +111,6 @@ void BookList::sellBook(const string &isbn) {
         cout << "购买失败，该书本不存在！" << endl;
     }
 }
-
 // 添加功能：主要完成图书信息的添加，要求ISBN号唯一
 void BookList::addBook(const string &name, const string &publisher, const string &isbn, const string &author, int count, double price) {
     Book *target = searchBookByIsbn(isbn);

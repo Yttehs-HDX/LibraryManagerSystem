@@ -15,7 +15,7 @@ private:
 
     // 存储所有书本
     static vector<Book> books;
-
+    // 打印信息
     static void printBooks();
 public:
     // 读出信息：从文件中将图书信息读入程序
@@ -30,11 +30,13 @@ public:
     static void showAllBooksByAuthor();
     static void showAllBooksByPublisher();
 
+    // 查找，返回指针
+    static vector<Book> searchBookByName(const string &name);
+    static Book * searchBookByIsbn(const string &isbn);
+    static vector<Book> searchBookByAuthor(const string &author);
+    static vector<Book> searchBookByPublisher(const string &publisher);
+
     // 查询功能：可按书名、ISBN号、作者、出版社进行查询
-    static Book *searchBookByName(const string &name);
-    static Book *searchBookByIsbn(const string &isbn);
-    static Book *searchBookByAuthor(const string &author);
-    static Book *searchBookByPublisher(const string &publisher);
 
     // 销售功能
     static void sellBook(const string &isbn);
