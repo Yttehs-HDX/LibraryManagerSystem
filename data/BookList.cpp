@@ -65,12 +65,57 @@ void BookList::showAllBooksByPublisher() {
          [](const Book &a, const Book &b) {return a.getPublisher() > b.getPublisher();});
     printBooks();
 }
-// 销售功能
-void BookList::sellBook(const string &isbn) {
+// 查询功能：可按书名、ISBN号、作者、出版社进行查询
+Book *BookList::searchBookByName(const string &name) {
+    for (Book &book : books) {
+        if (book.getName() == name) {
+            return &book;
+        }
+    }
+    return nullptr;
+}
+Book *BookList::searchBookByIsbn(const string &isbn) {
     for (Book &book : books) {
         if (book.getIsbn() == isbn) {
-            book.setCount(book.getCount() - 1);
-            break;
+            return &book;
         }
+    }
+    return nullptr;
+}
+Book *BookList::searchBookByAuthor(const string &author) {
+    for (Book &book : books) {
+        if (book.getAuthor() == author) {
+            return &book;
+        }
+    }
+    return nullptr;
+}
+Book *BookList::searchBookByPublisher(const string &publisher) {
+    for (Book &book : books) {
+        if (book.getPublisher() == publisher) {
+            return &book;
+        }
+    }
+    return nullptr;
+}
+// 销售功能：根据ISBN确定书本并将书本数量减一
+void BookList::sellBook(const string &isbn) {
+    Book *target = searchBookByIsbn(isbn);
+    if (target != nullptr) {
+        target->setCount(target->getCount() - 1);
+        cout << "购买成功。" << endl;
+    } else {
+        cout << "购买失败，该书本不存在！" << endl;
+    }
+}
+
+// 添加功能：主要完成图书信息的添加，要求ISBN号唯一
+void BookList::addBook(const string &name, const string &publisher, const string &isbn, const string &author, int count, double price) {
+    Book *target = searchBookByIsbn(isbn);
+    if (target != nullptr) {
+        cout << "添加失败，该书本已存在！" << endl;
+    } else {
+        books.emplace_back(name, publisher, isbn, author, count, price);
+        cout << "添加成功。" << endl;
     }
 }

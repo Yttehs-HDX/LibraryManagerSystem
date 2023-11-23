@@ -30,8 +30,17 @@ public:
     static void showAllBooksByAuthor();
     static void showAllBooksByPublisher();
 
+    // 查询功能：可按书名、ISBN号、作者、出版社进行查询
+    static Book *searchBookByName(const string &name);
+    static Book *searchBookByIsbn(const string &isbn);
+    static Book *searchBookByAuthor(const string &author);
+    static Book *searchBookByPublisher(const string &publisher);
+
     // 销售功能
     static void sellBook(const string &isbn);
+
+    // 添加功能：主要完成图书信息的添加，要求ISBN号唯一
+    static void addBook(const string &name, const string &publisher, const string &isbn, const string &author, int count, double price);
 };
 
 
