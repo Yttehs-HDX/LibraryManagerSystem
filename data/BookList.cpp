@@ -35,21 +35,16 @@ void BookList::saveAllBooks() {
 }
 // 打印信息
 void BookList::printOneBook(const Book &book) {
-    cout << book.getName()
-         << " " << book.getPublisher()
-         << " " << book.getIsbn()
-         << " " << book.getAuthor()
-         << " " << book.getCount()
-         << " " << book.getPrice() << endl;
+    cout << "书名： " << book.getName()
+         << "出版社： " << book.getPublisher()
+         << "ISBN： " << book.getIsbn()
+         << "作者： " << book.getAuthor()
+         << "数量： " << book.getCount()
+         << "价格： " << book.getPrice() << endl;
 }
 void BookList::printBooks() {
     for (const Book &book : books) {
-        cout << book.getName()
-             << " " << book.getPublisher()
-             << " " << book.getIsbn()
-             << " " << book.getAuthor()
-             << " " << book.getCount()
-             << " " << book.getPrice() << endl;
+        printOneBook(book);
     }
 }
 // 统计功能：输出当前书库中所有图书的总数及详细信息
