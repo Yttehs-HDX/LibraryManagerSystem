@@ -1,7 +1,7 @@
 #include "BookList.h"
 
 // 读出信息：从文件中将图书信息读入程序
-void BookList::initBooks() {
+void BookList::readAllBooks() {
     ifstream file(FILEPATH, ios::in);
     string name;
     string publisher;
@@ -11,11 +11,10 @@ void BookList::initBooks() {
     double price;
     if (file.is_open()) {
         while (file >> name >> publisher >> isbn >> author >> count >> price) {
-            file >> name >> publisher >> isbn >> author >> count >> price;
-            Book book(name, publisher, isbn, author, count, price);
-            books.push_back(book);
+            books.emplace_back(name, publisher, isbn, author, count, price);
         }
     }
+    books.erase(books.end());
     file.close();
 }
 // 图书存盘：将当前程序中的图书信息存入文件中
@@ -36,13 +35,17 @@ void BookList::saveAllBooks() {
 // 打印信息
 void BookList::printOneBook(const Book &book) {
     cout << "书名： " << book.getName()
-         << "出版社： " << book.getPublisher()
-         << "ISBN： " << book.getIsbn()
-         << "作者： " << book.getAuthor()
-         << "数量： " << book.getCount()
-         << "价格： " << book.getPrice() << endl;
+         << " 出版社： " << book.getPublisher()
+         << " ISBN： " << book.getIsbn()
+         << " 作者： " << book.getAuthor()
+         << " 数量： " << book.getCount()
+         << " 价格： " << book.getPrice() << endl;
 }
 void BookList::printBooks() {
+    if (books.empty()) {
+        cout << "当前书库中没有图书！" << endl;
+        return;
+    }
     for (const Book &book : books) {
         printOneBook(book);
     }

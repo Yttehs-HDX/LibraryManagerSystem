@@ -4,7 +4,7 @@
 void Manager::menu() {
     cout << "欢迎来到图书馆管理系统" << endl;
     instance = BookList();
-    instance.initBooks();
+    instance.readAllBooks();
     while (true) {
         cout << "菜单：" << endl;
         cout << "1. 销售图书" << endl;
@@ -36,8 +36,10 @@ void Manager::menu() {
             case 6:
                 sumBooks();
                 break;
-            default:
+            case 0:
                 return;
+            default:
+                cout << "非法输入！" << endl;
         }
     }
 }

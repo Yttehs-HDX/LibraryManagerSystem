@@ -7,7 +7,7 @@
 #include <algorithm>
 #include "Book.h"
 
-#define FILEPATH "books"
+#define FILEPATH "books.txt"
 
 class BookList {
 private:
@@ -28,7 +28,7 @@ private:
     void modifyOneBook(Book *book);
 public:
     // 读出信息：从文件中将图书信息读入程序
-    void initBooks();
+    void readAllBooks();
 
     // 图书存盘：将当前程序中的图书信息存入文件中
     void saveAllBooks();
