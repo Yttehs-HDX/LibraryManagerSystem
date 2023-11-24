@@ -111,7 +111,7 @@ vector<Book> BookList::searchBooksByPublisher(const string &publisher) {
 }
 // 修改
 void BookList::modifyOneBook(Book *book) {
-    cout << "请输入想修改的信息：";
+    cout << "请输入想修改的信息：" << endl;
     cout << "1. 书名" << endl;
     cout << "2. 出版社" << endl;
     cout << "3. ISBN" << endl;
@@ -260,6 +260,7 @@ void BookList::saleBook(const string &isbn) {
             cout << "购买成功。" << endl;
             saveAllBooks();
         } else {
+            deleteBook(isbn);
             cout << "购买失败，该书本已售罄！" << endl;
         }
     } else {
@@ -272,19 +273,19 @@ void BookList::addBook(const string &isbn) {
     if (target != nullptr) {
         cout << "添加失败，该书本已存在！" << endl;
     } else {
-        cout << "请输入图书名称：" << endl;
+        cout << "请输入图书名称：";
         string name;
         cin >> name;
-        cout << "请输入图书出版社：" << endl;
+        cout << "请输入图书出版社：";
         string publisher;
         cin >> publisher;
-        cout << "请输入图书作者：" << endl;
+        cout << "请输入图书作者：";
         string author;
         cin >> author;
-        cout << "请输入图书数量：" << endl;
+        cout << "请输入图书数量：";
         int count;
         cin >> count;
-        cout << "请输入图书价格：" << endl;
+        cout << "请输入图书价格：";
         double price;
         cin >> price;
         books.emplace_back(name, publisher, isbn, author, count, price);

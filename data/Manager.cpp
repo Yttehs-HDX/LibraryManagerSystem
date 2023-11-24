@@ -13,7 +13,7 @@ void Manager::menu() {
         cout << "4. 修改图书" << endl;
         cout << "5. 删除图书" << endl;
         cout << "6. 统计图书" << endl;
-        cout << "其他：退出系统" << endl;
+        cout << "0. 退出系统" << endl;
         cout << "请输入您的选择：";
         int input;
         cin >> input;
@@ -50,14 +50,14 @@ void Manager::saleBook() {
 }
 // 添加图书
 void Manager::addBook() {
-    cout << "请输入图书ISBN：" << endl;
+    cout << "请输入图书ISBN：";
     string isbn;
     cin >> isbn;
     instance.addBook(isbn);
 }
 // 查询图书
 void Manager::queryBook() {
-    cout << "请输入检索条件：" << endl;
+    cout << "请输入检索条件：";
     cout << "1. 书名" << endl;
     cout << "2. ISBN" << endl;
     cout << "3. 作者" << endl;
@@ -68,22 +68,22 @@ void Manager::queryBook() {
     string input;
     switch (choice) {
         case 1:
-            cout << "请输入：书名";
+            cout << "请输入书名：";
             cin >> input;
             instance.findBooksByName(input);
             break;
         case 2:
-            cout << "请输入：ISBN";
+            cout << "请输入ISBN：";
             cin >> input;
             instance.findBookByIsbn(input);
             break;
         case 3:
-            cout << "请输入：作者";
+            cout << "请输入作者：";
             cin >> input;
             instance.findBooksByAuthor(input);
             break;
         case 4:
-            cout << "请输入：出版社";
+            cout << "请输入出版社：";
             cin >> input;
             instance.findBooksByPublisher(input);
             break;
@@ -104,22 +104,22 @@ void Manager::updateBook() {
     string input;
     switch (choice) {
         case 1:
-            cout << "请输入：书名";
+            cout << "请输入书名：";
             cin >> input;
             instance.modifyBooksByName(input);
             break;
         case 2:
-            cout << "请输入：ISBN";
+            cout << "请输入ISBN：";
             cin >> input;
             instance.modifyBooksByIsbn(input);
             break;
         case 3:
-            cout << "请输入：作者";
+            cout << "请输入作者：";
             cin >> input;
             instance.modifyBooksByAuthor(input);
             break;
         case 4:
-            cout << "请输入：出版社";
+            cout << "请输入出版社：";
             cin >> input;
             instance.modifyBooksByPublisher(input);
             break;
@@ -129,7 +129,7 @@ void Manager::updateBook() {
 }
 // 删除图书
 void Manager::deleteBook() {
-    cout << "请输入ISBN：" << endl;
+    cout << "请输入ISBN：";
     string isbn;
     cin >> isbn;
     instance.deleteBook(isbn);
