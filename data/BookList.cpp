@@ -174,6 +174,7 @@ void BookList::modifyBooks(vector<Book> &buffer) {
             return;
         }
         modifyOneBook(&buffer[index]);
+        saveAllBooks();
     }
 }
 // 查询功能：可按书名、ISBN号、作者、出版社进行查询
@@ -244,17 +245,23 @@ void BookList::deleteBook(const string &isbn) {
         if (it->getIsbn() == isbn) {
             books.erase(it);
             cout << "删除成功。" << endl;
+            saveAllBooks();
             return;
         }
     }
     cout << "该标题不存在！" << endl;
 }
 // 销售功能：根据ISBN确定书本并将书本数量减一
-void BookList::sellBook(const string &isbn) {
+void BookList::saleBook(const string &isbn) {
     Book *target = searchBookByIsbn(isbn);
     if (target != nullptr) {
-        target->setCount(target->getCount() - 1);
-        cout << "购买成功。" << endl;
+        if (target->getCount() > 0) {
+            target->setCount(target->getCount() - 1);
+            cout << "购买成功。" << endl;
+            saveAllBooks();
+        } else {
+            cout << "购买失败，该书本已售罄！" << endl;
+        }
     } else {
         cout << "购买失败，该书本不存在！" << endl;
     }
@@ -282,5 +289,6 @@ void BookList::addBook(const string &isbn) {
         cin >> price;
         books.emplace_back(name, publisher, isbn, author, count, price);
         cout << "添加成功。" << endl;
+        saveAllBooks();
     }
 }

@@ -37,7 +37,6 @@ void Manager::menu() {
                 sumBooks();
                 break;
             default:
-                instance.saveAllBooks();
                 return;
         }
     }
@@ -47,7 +46,7 @@ void Manager::saleBook() {
     cout << "请输入图书ISBN：";
     string isbn;
     cin >> isbn;
-    instance.sellBook(isbn);
+    instance.saleBook(isbn);
 }
 // 添加图书
 void Manager::addBook() {

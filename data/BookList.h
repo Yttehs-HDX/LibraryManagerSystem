@@ -55,7 +55,7 @@ public:
     void deleteBook(const string &isbn);
 
     // 销售功能
-    void sellBook(const string &isbn);
+    void saleBook(const string &isbn);
 
     // 添加功能：主要完成图书信息的添加，要求ISBN号唯一
     void addBook(const string &isbn);
