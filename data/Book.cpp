@@ -8,59 +8,59 @@ author(std::move(author)),
 count(count), price(price) {}
 
 // setter
-// è®¾ç½®ä¹¦å
+// ÉèÖÃÊéÃû
 Book &Book::setName(const string &name) {
     this->name = name;
     return *this;
 }
-// è®¾ç½®å‡ºç‰ˆç¤¾
+// ÉèÖÃ³ö°æÉç
 Book &Book::setPublisher(const string &publisher) {
     this->publisher = publisher;
     return *this;
 }
-// è®¾ç½®ISBNå·
+// ÉèÖÃISBNºÅ
 Book &Book::setIsbn(const string &isbn) {
     this->isbn = isbn;
     return *this;
 }
-// è®¾ç½®ä½œè€…
+// ÉèÖÃ×÷Õß
 Book &Book::setAuthor(const string &author) {
     this->author = author;
     return *this;
 }
-// è®¾ç½®åº“å­˜é‡
+// ÉèÖÃ¿â´æÁ¿
 Book &Book::setCount(int count) {
     this->count = count;
     return *this;
 }
-// è®¾ç½®ä»·æ ¼
+// ÉèÖÃ¼Û¸ñ
 Book &Book::setPrice(double price) {
     this->price = price;
     return *this;
 }
 
 // getter
-// è·å–ä¹¦å
+// »ñÈ¡ÊéÃû
 [[nodiscard]] const string &Book::getName() const {
     return name;
 };
-// è·å–å‡ºç‰ˆç¤¾
+// »ñÈ¡³ö°æÉç
 [[nodiscard]] const string &Book::getPublisher() const {
     return publisher;
 };
-// è·å–ISBNå·
+// »ñÈ¡ISBNºÅ
 [[nodiscard]] const string &Book::getIsbn() const {
     return isbn;
 };
-// è·å–ä½œè€…
+// »ñÈ¡×÷Õß
 [[nodiscard]] const string &Book::getAuthor() const {
     return author;
 };
-// è·å–åº“å­˜é‡
+// »ñÈ¡¿â´æÁ¿
 [[nodiscard]] int Book::getCount() const {
     return count;
 };
-// è·å–ä»·æ ¼
+// »ñÈ¡¼Û¸ñ
 [[nodiscard]] double Book::getPrice() const {
     return price;
 }

@@ -11,53 +11,53 @@
 
 class BookList {
 private:
-    // å­˜å‚¨æ‰€æœ‰ä¹¦æœ¬
+    // ´æ´¢ËùÓĞÊé±¾
     vector<Book> books {Book("123456789", "123456789", "123456789", "1", 0, 0)};
-    // æ‰“å°ä¿¡æ¯
+    // ´òÓ¡ĞÅÏ¢
     void printOneBook(const Book &book);
     void printBooks();
 
-    // æŸ¥æ‰¾ï¼Œè¿”å›æŒ‡é’ˆæˆ–vector
+    // ²éÕÒ£¬·µ»ØÖ¸Õë»òvector
     vector<Book> searchBooksByName(const string &name);
     Book * searchBookByIsbn(const string &isbn);
     vector<Book> searchBooksByAuthor(const string &author);
     vector<Book> searchBooksByPublisher(const string &publisher);
 
-    // ä¿®æ”¹
+    // ĞŞ¸Ä
     void modifyBooks(vector<Book> &buffer);
     void modifyOneBook(Book *book);
 public:
-    // è¯»å‡ºä¿¡æ¯ï¼šä»æ–‡ä»¶ä¸­å°†å›¾ä¹¦ä¿¡æ¯è¯»å…¥ç¨‹åº
+    // ¶Á³öĞÅÏ¢£º´ÓÎÄ¼şÖĞ½«Í¼ÊéĞÅÏ¢¶ÁÈë³ÌĞò
     void initBooks();
 
-    // å›¾ä¹¦å­˜ç›˜ï¼šå°†å½“å‰ç¨‹åºä¸­çš„å›¾ä¹¦ä¿¡æ¯å­˜å…¥æ–‡ä»¶ä¸­
+    // Í¼Êé´æÅÌ£º½«µ±Ç°³ÌĞòÖĞµÄÍ¼ÊéĞÅÏ¢´æÈëÎÄ¼şÖĞ
     void saveAllBooks();
 
-    // ç»Ÿè®¡åŠŸèƒ½ï¼šè¾“å‡ºå½“å‰ä¹¦åº“ä¸­æ‰€æœ‰å›¾ä¹¦çš„æ€»æ•°åŠè¯¦ç»†ä¿¡æ¯
+    // Í³¼Æ¹¦ÄÜ£ºÊä³öµ±Ç°Êé¿âÖĞËùÓĞÍ¼ÊéµÄ×ÜÊı¼°ÏêÏ¸ĞÅÏ¢
     void showAllBooksByPrice();
     void showAllBooksByCount();
     void showAllBooksByAuthor();
     void showAllBooksByPublisher();
 
-    // æŸ¥è¯¢åŠŸèƒ½ï¼šå¯æŒ‰ä¹¦åã€ISBNå·ã€ä½œè€…ã€å‡ºç‰ˆç¤¾è¿›è¡ŒæŸ¥è¯¢
+    // ²éÑ¯¹¦ÄÜ£º¿É°´ÊéÃû¡¢ISBNºÅ¡¢×÷Õß¡¢³ö°æÉç½øĞĞ²éÑ¯
     void findBooksByName(const string &name);
     void findBookByIsbn(const string &isbn);
     void findBooksByAuthor(const string &author);
     void findBooksByPublisher(const string &publisher);
 
-    // ä¿®æ”¹åŠŸèƒ½ï¼šå¯æ ¹æ®æŸ¥è¯¢ç»“æœå¯¹ç›¸åº”çš„è®°å½•è¿›è¡Œä¿®æ”¹
+    // ĞŞ¸Ä¹¦ÄÜ£º¿É¸ù¾İ²éÑ¯½á¹û¶ÔÏàÓ¦µÄ¼ÇÂ¼½øĞĞĞŞ¸Ä
     void modifyBooksByName(const string &name);
     void modifyBooksByIsbn(const string &isbn);
     void modifyBooksByAuthor(const string &author);
     void modifyBooksByPublisher(const string &publisher);
 
-    // åˆ é™¤åŠŸèƒ½ï¼šä¸»è¦å®Œæˆå›¾ä¹¦ä¿¡æ¯çš„åˆ é™¤
+    // É¾³ı¹¦ÄÜ£ºÖ÷ÒªÍê³ÉÍ¼ÊéĞÅÏ¢µÄÉ¾³ı
     void deleteBook(const string &isbn);
 
-    // é”€å”®åŠŸèƒ½
+    // ÏúÊÛ¹¦ÄÜ
     void sellBook(const string &isbn);
 
-    // æ·»åŠ åŠŸèƒ½ï¼šä¸»è¦å®Œæˆå›¾ä¹¦ä¿¡æ¯çš„æ·»åŠ ï¼Œè¦æ±‚ISBNå·å”¯ä¸€
+    // Ìí¼Ó¹¦ÄÜ£ºÖ÷ÒªÍê³ÉÍ¼ÊéĞÅÏ¢µÄÌí¼Ó£¬ÒªÇóISBNºÅÎ¨Ò»
     void addBook(const string &isbn);
 };
 

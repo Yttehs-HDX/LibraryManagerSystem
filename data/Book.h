@@ -7,42 +7,42 @@ using namespace std;
 
 class Book {
 private:
-    string name{}; // ä¹¦å
-    string publisher{}; // å‡ºç‰ˆç¤¾
-    string isbn{}; // ISBNå·
-    string author{}; // ä½œè€…
-    int count{}; // åº“å­˜é‡
-    double price{}; // ä»·æ ¼
+    string name{}; // ÊéÃû
+    string publisher{}; // ³ö°æÉç
+    string isbn{}; // ISBNºÅ
+    string author{}; // ×÷Õß
+    int count{}; // ¿â´æÁ¿
+    double price{}; // ¼Û¸ñ
 public:
     // constructor
     Book(string name, string publisher, string isbn, string author, int count, double price);
 
     // setter
-    // è®¾ç½®ä¹¦å
+    // ÉèÖÃÊéÃû
     Book &setName(const string &name);
-    // è®¾ç½®å‡ºç‰ˆç¤¾
+    // ÉèÖÃ³ö°æÉç
     Book &setPublisher(const string &publisher);
-    // è®¾ç½®ISBNå·
+    // ÉèÖÃISBNºÅ
     Book &setIsbn(const string &isbn);
-    // è®¾ç½®ä½œè€…
+    // ÉèÖÃ×÷Õß
     Book &setAuthor(const string &author);
-    // è®¾ç½®åº“å­˜é‡
+    // ÉèÖÃ¿â´æÁ¿
     Book &setCount(int count);
-    // è®¾ç½®ä»·æ ¼
+    // ÉèÖÃ¼Û¸ñ
     Book &setPrice(double price);
 
     // getter
-    // è·å–ä¹¦å
+    // »ñÈ¡ÊéÃû
     [[nodiscard]] const string &getName() const;
-    // è·å–å‡ºç‰ˆç¤¾
+    // »ñÈ¡³ö°æÉç
     [[nodiscard]] const string &getPublisher() const;
-    // è·å–ISBNå·
+    // »ñÈ¡ISBNºÅ
     [[nodiscard]] const string &getIsbn() const;
-    // è·å–ä½œè€…
+    // »ñÈ¡×÷Õß
     [[nodiscard]] const string &getAuthor() const;
-    // è·å–åº“å­˜é‡
+    // »ñÈ¡¿â´æÁ¿
     [[nodiscard]] int getCount() const;
-    // è·å–ä»·æ ¼
+    // »ñÈ¡¼Û¸ñ
     [[nodiscard]] double getPrice() const;
 };
 

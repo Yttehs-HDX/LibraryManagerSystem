@@ -1,20 +1,20 @@
 #include "Manager.h"
 
-// ËèúÂçï
+// ≤Àµ•
 void Manager::menu() {
-    cout << "Ê¨¢ËøéÊù•Âà∞Âõæ‰π¶È¶ÜÁÆ°ÁêÜÁ≥ªÁªü" << endl;
+    cout << "ª∂”≠¿¥µΩÕº Èπ›π‹¿ÌœµÕ≥" << endl;
     instance = BookList();
     instance.initBooks();
     while (true) {
-        cout << "ËèúÂçïÔºö" << endl;
-        cout << "1. ÈîÄÂîÆÂõæ‰π¶" << endl;
-        cout << "2. Ê∑ªÂä†Âõæ‰π¶" << endl;
-        cout << "3. Êü•ËØ¢Âõæ‰π¶" << endl;
-        cout << "4. ‰øÆÊîπÂõæ‰π¶" << endl;
-        cout << "5. Âà†Èô§Âõæ‰π¶" << endl;
-        cout << "6. ÁªüËÆ°Âõæ‰π¶" << endl;
-        cout << "ÂÖ∂‰ªñÔºöÈÄÄÂá∫Á≥ªÁªü" << endl;
-        cout << "ËØ∑ËæìÂÖ•ÊÇ®ÁöÑÈÄâÊã©Ôºö";
+        cout << "≤Àµ•£∫" << endl;
+        cout << "1. œ˙ €Õº È" << endl;
+        cout << "2. ÃÌº”Õº È" << endl;
+        cout << "3. ≤È—ØÕº È" << endl;
+        cout << "4. –ﬁ∏ƒÕº È" << endl;
+        cout << "5. …æ≥˝Õº È" << endl;
+        cout << "6. Õ≥º∆Õº È" << endl;
+        cout << "∆‰À˚£∫ÕÀ≥ˆœµÕ≥" << endl;
+        cout << "«Î ‰»Îƒ˙µƒ—°‘Ò£∫";
         int input;
         cin >> input;
         switch (input) {
@@ -42,115 +42,117 @@ void Manager::menu() {
         }
     }
 }
-// ÈîÄÂîÆÂõæ‰π¶
+// œ˙ €Õº È
 void Manager::saleBook() {
-    cout << "ËØ∑ËæìÂÖ•Âõæ‰π¶ISBNÔºö";
+    cout << "«Î ‰»ÎÕº ÈISBN£∫";
     string isbn;
     cin >> isbn;
     instance.sellBook(isbn);
 }
-// Ê∑ªÂä†Âõæ‰π¶
+// ÃÌº”Õº È
 void Manager::addBook() {
-    cout << "ËØ∑ËæìÂÖ•Âõæ‰π¶ISBNÔºö" << endl;
+    cout << "«Î ‰»ÎÕº ÈISBN£∫" << endl;
     string isbn;
     cin >> isbn;
     instance.addBook(isbn);
 }
-// Êü•ËØ¢Âõæ‰π¶
+// ≤È—ØÕº È
 void Manager::queryBook() {
-    cout << "ËØ∑ËæìÂÖ•Ê£ÄÁ¥¢Êù°‰ª∂Ôºö" << endl;
-    cout << "1. ‰π¶Âêç" << endl;
+    cout << "«Î ‰»ÎºÏÀ˜Ãıº˛£∫" << endl;
+    cout << "1.  È√˚" << endl;
     cout << "2. ISBN" << endl;
-    cout << "3. ‰ΩúËÄÖ" << endl;
-    cout << "4. Âá∫ÁâàÁ§æ" << endl;
-    cout << "ËØ∑ËæìÂÖ•ÊÇ®ÁöÑÈÄâÊã©Ôºö";
+    cout << "3. ◊˜’ﬂ" << endl;
+    cout << "4. ≥ˆ∞Ê…Á" << endl;
+    cout << "«Î ‰»Îƒ˙µƒ—°‘Ò£∫";
     int choice;
     cin >> choice;
     string input;
     switch (choice) {
         case 1:
-            cout << "ËØ∑ËæìÂÖ•Ôºö‰π¶Âêç";
+            cout << "«Î ‰»Î£∫ È√˚";
             cin >> input;
             instance.findBooksByName(input);
             break;
         case 2:
-            cout << "ËØ∑ËæìÂÖ•ÔºöISBN";
+            cout << "«Î ‰»Î£∫ISBN";
             cin >> input;
             instance.findBookByIsbn(input);
             break;
         case 3:
-            cout << "ËØ∑ËæìÂÖ•Ôºö‰ΩúËÄÖ";
+            cout << "«Î ‰»Î£∫◊˜’ﬂ";
             cin >> input;
             instance.findBooksByAuthor(input);
             break;
         case 4:
-            cout << "ËØ∑ËæìÂÖ•ÔºöÂá∫ÁâàÁ§æ";
+            cout << "«Î ‰»Î£∫≥ˆ∞Ê…Á";
             cin >> input;
             instance.findBooksByPublisher(input);
             break;
         default:
-            cout << "ÈùûÊ≥ïËæìÂÖ•ÔºÅ" << endl;
+            cout << "∑«∑® ‰»Î£°" << endl;
     }
 }
-// ‰øÆÊîπÂõæ‰π¶
+// –ﬁ∏ƒÕº È
 void Manager::updateBook() {
-    cout << "ËØ∑ËæìÂÖ•Ê£ÄÁ¥¢Êù°‰ª∂Ôºö" << endl;
-    cout << "1. ‰π¶Âêç" << endl;
+    cout << "«Î ‰»ÎºÏÀ˜Ãıº˛£∫" << endl;
+    cout << "1.  È√˚" << endl;
     cout << "2. ISBN" << endl;
-    cout << "3. ‰ΩúËÄÖ" << endl;
-    cout << "4. Âá∫ÁâàÁ§æ" << endl;
-    cout << "ËØ∑ËæìÂÖ•ÊÇ®ÁöÑÈÄâÊã©Ôºö";
+    cout << "3. ◊˜’ﬂ" << endl;
+    cout << "4. ≥ˆ∞Ê…Á" << endl;
+    cout << "«Î ‰»Îƒ˙µƒ—°‘Ò£∫";
     int choice;
     cin >> choice;
     string input;
     switch (choice) {
         case 1:
-            cout << "ËØ∑ËæìÂÖ•Ôºö‰π¶Âêç";
+            cout << "«Î ‰»Î£∫ È√˚";
             cin >> input;
             instance.modifyBooksByName(input);
             break;
         case 2:
-            cout << "ËØ∑ËæìÂÖ•ÔºöISBN";
+            cout << "«Î ‰»Î£∫ISBN";
             cin >> input;
             instance.modifyBooksByIsbn(input);
             break;
         case 3:
-            cout << "ËØ∑ËæìÂÖ•Ôºö‰ΩúËÄÖ";
+            cout << "«Î ‰»Î£∫◊˜’ﬂ";
             cin >> input;
             instance.modifyBooksByAuthor(input);
             break;
         case 4:
-            cout << "ËØ∑ËæìÂÖ•ÔºöÂá∫ÁâàÁ§æ";
+            cout << "«Î ‰»Î£∫≥ˆ∞Ê…Á";
             cin >> input;
             instance.modifyBooksByPublisher(input);
             break;
         default:
-            cout << "ÈùûÊ≥ïËæìÂÖ•ÔºÅ" << endl;
+            cout << "∑«∑® ‰»Î£°" << endl;
     }
 }
-// Âà†Èô§Âõæ‰π¶
+// …æ≥˝Õº È
 void Manager::deleteBook() {
-    cout << "ËØ∑ËæìÂÖ•ISBNÔºö" << endl;
+    cout << "«Î ‰»ÎISBN£∫" << endl;
     string isbn;
     cin >> isbn;
     instance.deleteBook(isbn);
 }
-// ÁªüËÆ°Âõæ‰π¶
+// Õ≥º∆Õº È
 void Manager::sumBooks() {
-    cout << "ËØ∑ËæìÂÖ•Ê£ÄÁ¥¢Êù°‰ª∂Ôºö" << endl;
-    cout << "1. ‰ª∑Ê†º" << endl;
-    cout << "2. Êï∞Èáè" << endl;
-    cout << "3. ‰ΩúËÄÖ" << endl;
-    cout << "4. Âá∫ÁâàÁ§æ" << endl;
-    cout << "ËØ∑ËæìÂÖ•ÊÇ®ÁöÑÈÄâÊã©Ôºö";
+    cout << "«Î ‰»ÎºÏÀ˜Ãıº˛£∫" << endl;
+    cout << "1. º€∏Ò" << endl;
+    cout << "2.  ˝¡ø" << endl;
+    cout << "3. ◊˜’ﬂ" << endl;
+    cout << "4. ≥ˆ∞Ê…Á" << endl;
+    cout << "«Î ‰»Îƒ˙µƒ—°‘Ò£∫";
     int choice;
     cin >> choice;
     string input;
     switch (choice) {
         case 1:
             instance.showAllBooksByPrice();
+            break;
         case 2:
             instance.showAllBooksByCount();
+            break;
         case 3:
             instance.showAllBooksByAuthor();
             break;
@@ -158,6 +160,6 @@ void Manager::sumBooks() {
             instance.showAllBooksByPublisher();
             break;
         default:
-            cout << "ÈùûÊ≥ïËæìÂÖ•ÔºÅ" << endl;
+            cout << "∑«∑® ‰»Î£°" << endl;
     }
 }

@@ -9,25 +9,25 @@ using namespace std;
 class Manager {
 public:
     BookList instance;
-    // èœå•
+    // ²Ëµ¥
     void menu();
 
-    // é”€å”®å›¾ä¹¦
+    // ÏúÊÛÍ¼Êé
     void saleBook();
 
-    // æ·»åŠ å›¾ä¹¦
+    // Ìí¼ÓÍ¼Êé
     void addBook();
 
-    // æŸ¥è¯¢å›¾ä¹¦
+    // ²éÑ¯Í¼Êé
     void queryBook();
 
-    // ä¿®æ”¹å›¾ä¹¦
+    // ĞŞ¸ÄÍ¼Êé
     void updateBook();
 
-    // åˆ é™¤å›¾ä¹¦
+    // É¾³ıÍ¼Êé
     void deleteBook();
 
-    // ç»Ÿè®¡å›¾ä¹¦
+    // Í³¼ÆÍ¼Êé
     void sumBooks();
 };
 

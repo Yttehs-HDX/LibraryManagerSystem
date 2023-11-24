@@ -1,6 +1,6 @@
 #include "BookList.h"
 
-// è¯»å‡ºä¿¡æ¯ï¼šä»æ–‡ä»¶ä¸­å°†å›¾ä¹¦ä¿¡æ¯è¯»å…¥ç¨‹åº
+// ¶Á³öĞÅÏ¢£º´ÓÎÄ¼şÖĞ½«Í¼ÊéĞÅÏ¢¶ÁÈë³ÌĞò
 void BookList::initBooks() {
     ifstream file(FILEPATH, ios::in);
     string name;
@@ -18,7 +18,7 @@ void BookList::initBooks() {
     }
     file.close();
 }
-// å›¾ä¹¦å­˜ç›˜ï¼šå°†å½“å‰ç¨‹åºä¸­çš„å›¾ä¹¦ä¿¡æ¯å­˜å…¥æ–‡ä»¶ä¸­
+// Í¼Êé´æÅÌ£º½«µ±Ç°³ÌĞòÖĞµÄÍ¼ÊéĞÅÏ¢´æÈëÎÄ¼şÖĞ
 void BookList::saveAllBooks() {
     ofstream file(FILEPATH, ios::out);
     if (file.is_open()) {
@@ -33,7 +33,7 @@ void BookList::saveAllBooks() {
     }
     file.close();
 }
-// æ‰“å°ä¿¡æ¯
+// ´òÓ¡ĞÅÏ¢
 void BookList::printOneBook(const Book &book) {
     cout << book.getName()
          << " " << book.getPublisher()
@@ -52,7 +52,7 @@ void BookList::printBooks() {
              << " " << book.getPrice() << endl;
     }
 }
-// ç»Ÿè®¡åŠŸèƒ½ï¼šè¾“å‡ºå½“å‰ä¹¦åº“ä¸­æ‰€æœ‰å›¾ä¹¦çš„æ€»æ•°åŠè¯¦ç»†ä¿¡æ¯
+// Í³¼Æ¹¦ÄÜ£ºÊä³öµ±Ç°Êé¿âÖĞËùÓĞÍ¼ÊéµÄ×ÜÊı¼°ÏêÏ¸ĞÅÏ¢
 void BookList::showAllBooksByPrice() {
     sort(books.begin(), books.end(),
          [](const Book &a, const Book &b) {return a.getPrice() > b.getPrice();});
@@ -73,7 +73,7 @@ void BookList::showAllBooksByPublisher() {
          [](const Book &a, const Book &b) {return a.getPublisher() > b.getPublisher();});
     printBooks();
 }
-// æŸ¥æ‰¾ï¼Œè¿”å›æŒ‡é’ˆæˆ–vector
+// ²éÕÒ£¬·µ»ØÖ¸Õë»òvector
 vector<Book> BookList::searchBooksByName(const string &name) {
     vector<Book> buffer;
     for (const Book &book : books) {
@@ -109,19 +109,19 @@ vector<Book> BookList::searchBooksByPublisher(const string &publisher) {
     }
     return buffer;
 }
-// ä¿®æ”¹
+// ĞŞ¸Ä
 void BookList::modifyOneBook(Book *book) {
-    cout << "è¯·è¾“å…¥æƒ³ä¿®æ”¹çš„ä¿¡æ¯ï¼š";
-    cout << "1. ä¹¦å" << endl;
-    cout << "2. å‡ºç‰ˆç¤¾" << endl;
+    cout << "ÇëÊäÈëÏëĞŞ¸ÄµÄĞÅÏ¢£º";
+    cout << "1. ÊéÃû" << endl;
+    cout << "2. ³ö°æÉç" << endl;
     cout << "3. ISBN" << endl;
-    cout << "4. ä½œè€…" << endl;
-    cout << "5. åº“å­˜é‡" << endl;
-    cout << "6. ä»·æ ¼" << endl;
-    cout << "0. è¿”å›" << endl;
+    cout << "4. ×÷Õß" << endl;
+    cout << "5. ¿â´æÁ¿" << endl;
+    cout << "6. ¼Û¸ñ" << endl;
+    cout << "0. ·µ»Ø" << endl;
     int choice;
     cin >> choice;
-    cout << "è¯·è¾“å…¥æ–°å€¼ï¼š";
+    cout << "ÇëÊäÈëĞÂÖµ£º";
     string input1;
     int input2;
     switch (choice) {
@@ -152,35 +152,35 @@ void BookList::modifyOneBook(Book *book) {
             book->setPrice(input2);
             break;
         default:
-            cout << "éæ³•è¾“å…¥ï¼" << endl;
+            cout << "·Ç·¨ÊäÈë£¡" << endl;
             return;
     }
-    cout << "ä¿®æ”¹æˆåŠŸã€‚" << endl;
+    cout << "ĞŞ¸Ä³É¹¦¡£" << endl;
 }
 void BookList::modifyBooks(vector<Book> &buffer) {
     if (buffer.empty()) {
-        cout << "è¯¥æ ‡é¢˜ä¸å­˜åœ¨ï¼" << endl;
+        cout << "¸Ã±êÌâ²»´æÔÚ£¡" << endl;
     } else {
         int num = 1;
         for (const Book &book : books) {
             cout << num++ << " ";
             printOneBook(book);
         }
-        cout << "è¯·è¾“å…¥ä½ æƒ³è¦ä¿®æ”¹çš„åºå·ï¼š";
+        cout << "ÇëÊäÈëÄãÏëÒªĞŞ¸ÄµÄĞòºÅ£º";
         int index;
         cin >> index;
         if (index < 0 && index > num) {
-            cout << "éæ³•è¾“å…¥ï¼" << endl;
+            cout << "·Ç·¨ÊäÈë£¡" << endl;
             return;
         }
         modifyOneBook(&buffer[index]);
     }
 }
-// æŸ¥è¯¢åŠŸèƒ½ï¼šå¯æŒ‰ä¹¦åã€ISBNå·ã€ä½œè€…ã€å‡ºç‰ˆç¤¾è¿›è¡ŒæŸ¥è¯¢
+// ²éÑ¯¹¦ÄÜ£º¿É°´ÊéÃû¡¢ISBNºÅ¡¢×÷Õß¡¢³ö°æÉç½øĞĞ²éÑ¯
 void BookList::findBooksByName(const string &name) {
     vector<Book> buffer = searchBooksByName(name);
     if (buffer.empty()) {
-        cout << "è¯¥æ ‡é¢˜ä¸å­˜åœ¨ï¼" << endl;
+        cout << "¸Ã±êÌâ²»´æÔÚ£¡" << endl;
     } else {
         int num = 1;
         for (const Book &book : books) {
@@ -194,13 +194,13 @@ void BookList::findBookByIsbn(const string &isbn) {
     if (target != nullptr) {
         printOneBook(*target);
     } else {
-        cout << "è¯¥æ ‡é¢˜ä¸å­˜åœ¨ï¼" << endl;
+        cout << "¸Ã±êÌâ²»´æÔÚ£¡" << endl;
     }
 }
 void BookList::findBooksByAuthor(const string &author) {
     vector<Book> buffer = searchBooksByAuthor(author);
     if (buffer.empty()) {
-        cout << "è¯¥æ ‡é¢˜ä¸å­˜åœ¨ï¼" << endl;
+        cout << "¸Ã±êÌâ²»´æÔÚ£¡" << endl;
     } else {
         int num = 1;
         for (const Book &book : books) {
@@ -212,7 +212,7 @@ void BookList::findBooksByAuthor(const string &author) {
 void BookList::findBooksByPublisher(const string &publisher) {
     vector<Book> buffer = searchBooksByPublisher(publisher);
     if (buffer.empty()) {
-        cout << "è¯¥æ ‡é¢˜ä¸å­˜åœ¨ï¼" << endl;
+        cout << "¸Ã±êÌâ²»´æÔÚ£¡" << endl;
     } else {
         int num = 1;
         for (const Book &book : books) {
@@ -221,7 +221,7 @@ void BookList::findBooksByPublisher(const string &publisher) {
         }
     }
 }
-// ä¿®æ”¹åŠŸèƒ½ï¼šå¯æ ¹æ®æŸ¥è¯¢ç»“æœå¯¹ç›¸åº”çš„è®°å½•è¿›è¡Œä¿®æ”¹
+// ĞŞ¸Ä¹¦ÄÜ£º¿É¸ù¾İ²éÑ¯½á¹û¶ÔÏàÓ¦µÄ¼ÇÂ¼½øĞĞĞŞ¸Ä
 void BookList::modifyBooksByName(const string &name) {
     vector<Book> buffer = searchBooksByName(name);
     modifyBooks(buffer);
@@ -238,49 +238,49 @@ void BookList::modifyBooksByPublisher(const string &publisher) {
     vector<Book> buffer = searchBooksByPublisher(publisher);
     modifyBooks(buffer);
 }
-// åˆ é™¤åŠŸèƒ½ï¼šä¸»è¦å®Œæˆå›¾ä¹¦ä¿¡æ¯çš„åˆ é™¤
+// É¾³ı¹¦ÄÜ£ºÖ÷ÒªÍê³ÉÍ¼ÊéĞÅÏ¢µÄÉ¾³ı
 void BookList::deleteBook(const string &isbn) {
     for (auto it = books.begin(); it != books.end(); ++it) {
         if (it->getIsbn() == isbn) {
             books.erase(it);
-            cout << "åˆ é™¤æˆåŠŸã€‚" << endl;
+            cout << "É¾³ı³É¹¦¡£" << endl;
             return;
         }
     }
-    cout << "è¯¥æ ‡é¢˜ä¸å­˜åœ¨ï¼" << endl;
+    cout << "¸Ã±êÌâ²»´æÔÚ£¡" << endl;
 }
-// é”€å”®åŠŸèƒ½ï¼šæ ¹æ®ISBNç¡®å®šä¹¦æœ¬å¹¶å°†ä¹¦æœ¬æ•°é‡å‡ä¸€
+// ÏúÊÛ¹¦ÄÜ£º¸ù¾İISBNÈ·¶¨Êé±¾²¢½«Êé±¾ÊıÁ¿¼õÒ»
 void BookList::sellBook(const string &isbn) {
     Book *target = searchBookByIsbn(isbn);
     if (target != nullptr) {
         target->setCount(target->getCount() - 1);
-        cout << "è´­ä¹°æˆåŠŸã€‚" << endl;
+        cout << "¹ºÂò³É¹¦¡£" << endl;
     } else {
-        cout << "è´­ä¹°å¤±è´¥ï¼Œè¯¥ä¹¦æœ¬ä¸å­˜åœ¨ï¼" << endl;
+        cout << "¹ºÂòÊ§°Ü£¬¸ÃÊé±¾²»´æÔÚ£¡" << endl;
     }
 }
-// æ·»åŠ åŠŸèƒ½ï¼šä¸»è¦å®Œæˆå›¾ä¹¦ä¿¡æ¯çš„æ·»åŠ ï¼Œè¦æ±‚ISBNå·å”¯ä¸€
+// Ìí¼Ó¹¦ÄÜ£ºÖ÷ÒªÍê³ÉÍ¼ÊéĞÅÏ¢µÄÌí¼Ó£¬ÒªÇóISBNºÅÎ¨Ò»
 void BookList::addBook(const string &isbn) {
     Book *target = searchBookByIsbn(isbn);
     if (target != nullptr) {
-        cout << "æ·»åŠ å¤±è´¥ï¼Œè¯¥ä¹¦æœ¬å·²å­˜åœ¨ï¼" << endl;
+        cout << "Ìí¼ÓÊ§°Ü£¬¸ÃÊé±¾ÒÑ´æÔÚ£¡" << endl;
     } else {
-        cout << "è¯·è¾“å…¥å›¾ä¹¦åç§°ï¼š" << endl;
+        cout << "ÇëÊäÈëÍ¼ÊéÃû³Æ£º" << endl;
         string name;
         cin >> name;
-        cout << "è¯·è¾“å…¥å›¾ä¹¦å‡ºç‰ˆç¤¾ï¼š" << endl;
+        cout << "ÇëÊäÈëÍ¼Êé³ö°æÉç£º" << endl;
         string publisher;
         cin >> publisher;
-        cout << "è¯·è¾“å…¥å›¾ä¹¦ä½œè€…ï¼š" << endl;
+        cout << "ÇëÊäÈëÍ¼Êé×÷Õß£º" << endl;
         string author;
         cin >> author;
-        cout << "è¯·è¾“å…¥å›¾ä¹¦æ•°é‡ï¼š" << endl;
+        cout << "ÇëÊäÈëÍ¼ÊéÊıÁ¿£º" << endl;
         int count;
         cin >> count;
-        cout << "è¯·è¾“å…¥å›¾ä¹¦ä»·æ ¼ï¼š" << endl;
+        cout << "ÇëÊäÈëÍ¼Êé¼Û¸ñ£º" << endl;
         double price;
         cin >> price;
         books.emplace_back(name, publisher, isbn, author, count, price);
-        cout << "æ·»åŠ æˆåŠŸã€‚" << endl;
+        cout << "Ìí¼Ó³É¹¦¡£" << endl;
     }
 }
