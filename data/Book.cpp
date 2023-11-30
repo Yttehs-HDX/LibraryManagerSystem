@@ -64,3 +64,9 @@ Book &Book::setPrice(double price) {
 [[nodiscard]] double Book::getPrice() const {
     return price;
 }
+// <<
+ostream &operator<<(ostream &os, const Book &book) {
+    os << "书名： " << book.name << " 出版社： " << book.publisher << " ISBN： " << book.isbn << " 作者： "
+       << book.author << " 数量： " << book.count << " 价格： " << book.price;
+    return os;
+}

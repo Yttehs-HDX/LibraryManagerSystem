@@ -34,12 +34,7 @@ void BookList::saveAllBooks() {
 }
 // 打印信息
 void BookList::printOneBook(const Book &book) {
-    cout << "书名： " << book.getName()
-         << " 出版社： " << book.getPublisher()
-         << " ISBN： " << book.getIsbn()
-         << " 作者： " << book.getAuthor()
-         << " 数量： " << book.getCount()
-         << " 价格： " << book.getPrice() << endl;
+    cout << book << endl;
 }
 void BookList::printBooks() {
     if (books.empty()) {

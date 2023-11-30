@@ -20,6 +20,10 @@ public:
     // setter
     // 设置书名
     Book &setName(const string &name);
+
+    // <<
+    friend ostream &operator<<(ostream &os, const Book &book);
+
     // 设置出版社
     Book &setPublisher(const string &publisher);
     // 设置ISBN号
