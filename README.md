@@ -1,2 +1,0 @@
-# LibraryManagerSystem
-Just my homework.
